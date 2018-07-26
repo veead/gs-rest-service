@@ -16,8 +16,6 @@ public class NoXssValidator implements ConstraintValidator<NoXss, String> {
    @Override
    public boolean isValid(String value, ConstraintValidatorContext context) {
       String sanitized = JsonSanitizer.sanitize(value);
-      System.out.println(value);
-      System.out.println(sanitized);
       return sanitized.equals(value);
    }
 }

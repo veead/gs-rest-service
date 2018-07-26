@@ -19,8 +19,11 @@ public class GreetingController {
 
     @PostMapping("/greeting")
     public Greeting createGreeting(@RequestBody @Valid Greeting greeting) {
-	//String content = JsonSanitizer.sanitize( greeting.getContent() );
-	String content = greeting.getContent();
-        return new Greeting(counter.incrementAndGet(), content);
+        return new Greeting(greeting.getId(), content);
+    }
+    
+    @PostMapping("/unsafeGreeting")
+    public Greeting createUnsafeGreeting(@RequestBody Greeting greeting) {
+        return new Greeting(greeting.getId(), content);
     }
 }
